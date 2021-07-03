@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
 
+  feedbacks: any = [{ name: 'Sandeep Kumar Shukla', email: 'sandeepini.2012@gmail.com', message: 'Website is awesome!' }];
+
+  feedbackData: any = {
+    name: '',
+    email: '',
+    message: '',
+  };
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+  sendFeedback(data: any) {
+    // console.log(data);
+    this.feedbacks.push(data);
+    localStorage.setItem('feedbacks', JSON.stringify(this.feedbacks))
   }
 
 }

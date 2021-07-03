@@ -1,31 +1,89 @@
 <div id="contacts" class="contact__container">
-    <div class="contact__container__wrapper">
-        <div class="container mt-5">
-            <h2 class="text-center">Write Us A Line</h2>
-            <p class="text-center">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe enim
-                distinctio ut eaque dolores iure?
-            </p>
+  <div class="contact__container__wrapper">
+    <div class="container mt-5">
+      <h2 class="text-center">Write Us A Line</h2>
+      <p class="text-center">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe enim
+        distinctio ut eaque dolores iure?
+      </p>
 
-            <form>
-                <div class="mb-3">
-                    <label for="name" class="form-label">Your Name</label>
-                    <input type="text" class="form-control" id="name" />
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    <div id="emailHelp" class="form-text">
-                        We'll never share your email with anyone else.
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" id="message" rows="3"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+      <form #feedback="ngForm">
+        <div class="mb-3">
+          <label for="name" class="form-label">Your Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="name"
+            [(ngModel)]="feedbackData.name"
+            required
+            #nameValidate="ngModel"
+          />
+          <div
+            id="error"
+            class="form-text text-danger"
+            *ngIf="
+              nameValidate.errors &&
+              (nameValidate.dirty || nameValidate.touched)
+            "
+          >
+            Name is required
+          </div>
         </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            type="email"
+            class="form-control"
+            pattern="[^ @]*@[^ @]*"
+            name="email"
+            [(ngModel)]="feedbackData.email"
+            required
+            #emailValidate="ngModel"
+          />
+          <div
+            id="error"
+            class="form-text text-danger"
+            *ngIf="
+            emailValidate.errors &&
+              (emailValidate.dirty || emailValidate.touched)
+            "
+          >
+            Email is required
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">Message</label>
+          <textarea
+            class="form-control"
+            id="message"
+            rows="3"
+            required
+            name="message"
+            [(ngModel)]="feedbackData.message"
+            #messageValidate="ngModel"
+          ></textarea>
+          <div
+          id="error"
+          class="form-text text-danger"
+          *ngIf="
+          messageValidate.errors &&
+            (messageValidate.dirty || messageValidate.touched)
+          "
+        >
+          Message is required
+        </div>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!feedback.valid"
+          (click)="sendFeedback(feedbackData)"
+        >
+          Submit
+        </button>
+      </form>
     </div>
+  </div>
 </div>

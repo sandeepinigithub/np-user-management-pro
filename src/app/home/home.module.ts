@@ -10,6 +10,7 @@ import { FeaturesComponent } from './features/features.component';
 import { WorksComponent } from './works/works.component';
 import { ServicesComponent } from './services/services.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,12 +21,13 @@ import { ContactsComponent } from './contacts/contacts.component';
     FeaturesComponent,
     WorksComponent,
     ServicesComponent,
-    ContactsComponent
+    ContactsComponent,
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SwiperModule,
+    FormsModule,
   ],
   exports: []
 })
