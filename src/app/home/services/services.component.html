@@ -1,0 +1,25 @@
+<div id="services" class="service__container">
+    <div class="service__container__wrapper py-5">
+        <div class="row justify-content-evenly m-auto px-3">
+            <h2 class="text-center my-3">Our Services</h2>
+            <p class="text-center text-black-50  mb-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
+                itaque fugiat sapiente, optio debitis aut.
+            </p>
+            <div *ngFor = "let service of services" class="card shadow col-10 col-sm-4 col-md-3 col-xl-3  m-2">
+                <span class="text-center mt-5"><i ngClass="{{service.iconClass}}"></i></span>
+                <h4 class="text-center my-5">{{service.name}}</h4>
+                <p class="text-center mb-5">
+                   {{service.description}}
+                </p>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+</div>

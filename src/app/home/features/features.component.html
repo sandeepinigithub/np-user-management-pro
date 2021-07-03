@@ -1,0 +1,23 @@
+<div id="features" class="feature__container">
+    <div class="feature__container__wrapper">
+        <h2 class="text-center mb-2 mt-5">Features that you can trust upon</h2>
+        <p class="text-center mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, eos? Lorem ipsum
+            dolor sit.</p>
+        <div class="row m-auto justify-content-around">
+                <div *ngFor = "let feature of features" class="col-12 col-sm-6 col-md-3 text-center">
+                    <i ngClass="{{feature.iconClass}}"></i>
+                    <h4 class="py-3">{{feature.name}}</h4>
+                    <p>{{feature.description}} </p>
+                </div>
+
+            <div class="w-100"></div>
+            <div class="col-12 ">
+                <div class="container">
+                    <img class="img-fluid" src="../../assets/mobile-flat.png" alt="">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

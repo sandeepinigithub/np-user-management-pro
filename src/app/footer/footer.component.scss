@@ -1,0 +1,36 @@
+$fbg-color: #45526e;
+$font-color1: #fff;
+$font-color2: rgba(
+  $color: #fff,
+  $alpha: 0.7,
+);
+$font-color-hover1: rgba(
+  $color: #fff,
+  $alpha: 0.7,
+);
+$font-color-hover2: rgba(
+  $color: #fff,
+  $alpha: 1,
+);
+
+.footer__container {
+  padding-top: 1.4rem;
+  margin-top: 2.5rem;
+  background-color: $fbg-color;
+  width: 100%;
+  &__wrapper {
+    font-size: 0.8rem;
+    color: $font-color2;
+    & h6 {
+      color: $font-color1;
+      font-size: 16PX;
+    }
+    & a {
+      color: $font-color2;
+      text-decoration: none;
+      &:hover {
+        color: $font-color-hover2;
+      }
+    }
+  }
+}
