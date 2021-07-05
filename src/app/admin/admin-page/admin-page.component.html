@@ -1,0 +1,328 @@
+<div class="container">
+  <button class="btn btn-info my-3" routerLink="/admin/feedbacks">See feedbacks</button>
+  <div class="table-wrapper">
+    
+    <div class="table-title">
+      <div class="row">
+        <div class="d-flex col-sm-8">
+          <h2>User List</h2>
+          <button
+            type="button"
+            class="btn btn-primary rounded-pill mx-5"
+            data-bs-toggle="modal"
+            data-bs-target="#addOrEditUser"
+            (click)="addHeading()"
+          >
+            <i class="bi bi-plus"></i> Add New User
+          </button>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search&hellip;"
+              [(ngModel)]="searchField"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <table class="table table-striped table-hover table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Role</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of (users | userFilter : searchField)">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.password }}</td>
+          <td>{{ user.role }}</td>
+          <td
+            [ngClass]="{
+              greenBackground: user.status == 'active',
+              redBackground: user.status != 'active'
+            }"
+          >
+            {{ user.status }}
+          </td>
+          <td>
+            <a
+              class="view"
+              title="View"
+              data-toggle="tooltip"
+              data-bs-toggle="modal"
+              data-bs-target="#viewUser"
+              (click)="view(user)"
+              ><i class="bi bi-eye"></i
+            ></a>
+            <a
+              class="edit"
+              title="Edit"
+              data-toggle="tooltip"
+              data-bs-toggle="modal"
+              data-bs-target="#addOrEditUser"
+              (click)="addOrEdit(user)"
+              ><i class="bi bi-pencil-square"></i
+            ></a>
+            <a
+              class="delete"
+              title="Delete"
+              data-toggle="tooltip"
+              (click)="delete(user.id)"
+              ><i class="bi bi-trash-fill"></i
+            ></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-container>
+    <div
+      class="modal fade"
+      tabindex="-1"
+      id="addOrEditUser"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ formHeading }}</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="userForm">
+              <div class="mb-3">
+                <label for="userId" class="form-label">User Id : </label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="userId"
+                  placeholder="Id"
+                  formControlName="id"
+                  required
+                />
+                <div
+                  class="fs-6 text-danger"
+                  *ngIf="this.form.id.errors?.required"
+                >
+                  Id is required.
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="userName" class="form-label">Name : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userName"
+                  placeholder="Name"
+                  formControlName="name"
+                  required
+                />
+                <!-- kkk -->
+
+                <div
+                  class="fs-6 text-danger"
+                  *ngIf="this.form.name.errors?.required"
+                >
+                  Name is required.
+                </div>
+
+                <div
+                  class="fs-6 text-danger"
+                  *ngIf="this.form.name.errors?.minlength"
+                >
+                  Name must be at least 4 characters long.
+                </div>
+                <!-- lll  -->
+              </div>
+              <div class="mb-3">
+                <label for="userUsername" class="form-label">Username : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userUsername"
+                  placeholder="Username"
+                  formControlName="username"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="userEmail" class="form-label">Email : </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="userEmail"
+                  placeholder="Email"
+                  formControlName="email"
+                  required
+                />
+
+                <div
+                  class="fs-6 text-danger"
+                  *ngIf="this.form.email.errors?.required"
+                >
+                  Email is required.
+                </div>
+              </div>
+
+              <!-- paasword -->
+
+              <div class="mb-3">
+                <label for="userPassword" class="form-label">Password : </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="userPassword"
+                  placeholder="Password"
+                  formControlName="password"
+                  required
+                />
+
+                <div
+                  class="fs-6 text-danger"
+                  *ngIf="this.form.password.errors?.required"
+                >
+                  Password is required.
+                </div>
+              </div>
+              <!-- sfvd -->
+
+              <div class="mb-3">
+                <label for="userRole" class="form-label">Role : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userRole"
+                  placeholder="Role"
+                  formControlName="role"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="userStatus" class="form-label">Status : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userStatus"
+                  placeholder="Status"
+                  formControlName="status"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              [ngClass]="{ showNone: editFlag }"
+              data-bs-dismiss="modal"
+              (click)="addOrEdit()"
+              [disabled]="
+                this.form.name.errors?.required ||
+                this.form.name.errors?.minlength ||
+                this.form.id.errors?.required ||
+                this.form.email.errors?.required
+              "
+            >
+              Add
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              [ngClass]="{ showNone: !editFlag }"
+              data-bs-dismiss="modal"
+              (click)="saveChanges()"
+            >
+              Save Changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div
+      class="modal fade"
+      tabindex="-1"
+      id="viewUser"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">User Details</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <p class="fs-5 text-danger">
+                <i class="bi bi-card-text"></i> Id :
+                <span class="text-dark">{{ viewData.id }}</span>
+              </p>
+              <p class="fs-5 text-danger">
+                <i class="bi bi-person-square"></i> Name :
+                <span class="text-dark">{{ viewData.name }}</span>
+              </p>
+              <p class="fs-5 text-danger">
+                <i class="bi bi-arrow-right-circle"></i> Username :
+                <span class="text-dark">{{ viewData.username }}</span>
+              </p>
+              <p class="fs-5 text-danger">
+                <i class="bi bi-envelope"></i> Email :
+                <span class="text-dark">{{ viewData.email }}</span>
+              </p>
+              <p class="fs-5 text-danger">
+                <i class="bi bi-key-fill"></i> Password :
+                <span class="text-dark">{{ viewData.password }}</span>
+              </p>
+              <p class="fs-5 text-danger">
+                <i class="bi bi-person"></i> Role :
+                <span class="text-dark">{{ viewData.role }}</span>
+              </p>
+              <p class="fs-5 text-danger">
+                <i class="bi bi-clock"></i> Status :
+                <span class="text-dark">{{ viewData.status }}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -5,12 +5,12 @@ import { HomeRoutingModule } from './home-routing.module';
 
 import { SwiperModule } from 'swiper/angular';
 import { HomeComponent } from './home.component';
-import { CarouselComponent } from './carousel/carousel.component';
 import { FeaturesComponent } from './features/features.component';
 import { WorksComponent } from './works/works.component';
-import { ServicesComponent } from './services/services.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ServicesComponent } from './services/services.component';
+import { CarouselComponent } from './carousel/carousel.component';
 
 
 

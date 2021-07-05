@@ -1,1 +1,181 @@
-<p>signup works!</p>
+<div class="container my-3">
+  <div class="row justify-content-sm-center h-100">
+    <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
+      <div class="card shadow-lg">
+        <div class="card-body p-5">
+          <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
+          <form #signup="ngForm">
+            <div class="mb-3">
+              <label for="id" class="form-label">Id</label>
+              <input
+                type="number"
+                class="form-control"
+                id="id"
+                name="id"
+                [(ngModel)]="signupData.id"
+                required
+                #idValidate="ngModel"
+              />
+              <div
+                id="error"
+                class="form-text text-danger"
+                *ngIf="
+                  idValidate.errors && (idValidate.dirty || idValidate.touched)
+                "
+              >
+                Id is required
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="signupData.name"
+                required
+                #nameValidate="ngModel"
+              />
+              <div
+                id="error"
+                class="form-text text-danger"
+                *ngIf="
+                  nameValidate.errors &&
+                  (nameValidate.dirty || nameValidate.touched)
+                "
+              >
+                Name is required
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="username" class="form-label">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                [(ngModel)]="signupData.username"
+                required
+                #usernameValidate="ngModel"
+              />
+              <div
+                id="error"
+                class="form-text text-danger"
+                *ngIf="
+                  usernameValidate.errors &&
+                  (usernameValidate.dirty || usernameValidate.touched)
+                "
+              >
+                Username is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="signupData.email"
+                required
+                #emailValidate="ngModel"
+              />
+              <div
+                id="error"
+                class="form-text text-danger"
+                *ngIf="
+                  emailValidate.errors &&
+                  (emailValidate.dirty || emailValidate.touched)
+                "
+              >
+                Email is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control"
+                name="password"
+                [(ngModel)]="signupData.password"
+                required
+                #passwordValidate="ngModel"
+              />
+              <div
+                id="error"
+                class="form-text text-danger"
+                *ngIf="
+                  passwordValidate.errors &&
+                  (passwordValidate.dirty || passwordValidate.touched)
+                "
+              >
+                Password is required
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="role" class="form-label">Role</label>
+              <input
+                type="text"
+                class="form-control"
+                name="role"
+                [(ngModel)]="signupData.role"
+                required
+                #roleValidate="ngModel"
+              />
+              <div
+                id="error"
+                class="form-text text-danger"
+                *ngIf="
+                roleValidate.errors &&
+                  (roleValidate.dirty || roleValidate.touched)
+                "
+              >
+                Role is required
+              </div>
+            </div>
+
+            
+            <div class="mb-3">
+              <label for="status" class="form-label">Status</label>
+              <input
+                type="text"
+                class="form-control"
+                name="status"
+                [(ngModel)]="signupData.status"
+                required
+                #statusValidate="ngModel"
+              />
+              <div
+                id="error"
+                class="form-text text-danger"
+                *ngIf="
+                statusValidate.errors &&
+                  (statusValidate.dirty || statusValidate.touched)
+                "
+              >
+                Status is required
+              </div>
+            </div>
+            
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              [disabled]="!signup.valid"
+              (click)="signupUser(signupData)"
+            >
+              Sign Up
+            </button>
+          </form>
+        </div>
+        <div class="card-footer py-3 border-0">
+          <div class="text-center">
+            Already have an account?
+            <a routerLink="/login/signin" class="text-dark">Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

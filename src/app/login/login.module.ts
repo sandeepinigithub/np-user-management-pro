@@ -4,10 +4,9 @@ import { CommonModule } from '@angular/common';
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginComponent } from './login.component';
 
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,8 +18,7 @@ import { SignupComponent } from './signup/signup.component';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    MatCardModule,
-    MatCheckboxModule
+    FormsModule
     
   ],
 })

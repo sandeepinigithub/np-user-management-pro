@@ -23,6 +23,13 @@ export class ContactsComponent implements OnInit {
     // console.log(data);
     this.feedbacks.push(data);
     localStorage.setItem('feedbacks', JSON.stringify(this.feedbacks))
+    alert("Feedback send !! ")
+    this.formDataClear(this.feedbackData)
+  }
+  formDataClear(formdData : any){
+    formdData.name='';
+    formdData.email='';
+    formdData.message='';
   }
 
 }
