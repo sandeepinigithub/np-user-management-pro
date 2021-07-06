@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 export class ContactsComponent implements OnInit {
 
   feedbacks: any = [{ name: 'Sandeep Kumar Shukla', email: 'sandeepini.2012@gmail.com', message: 'Website is awesome!' }];
+  feedbackSuccess:boolean = false;
 
   feedbackData: any = {
     name: '',
@@ -25,8 +26,7 @@ export class ContactsComponent implements OnInit {
     this.feedbacks.push(data);
     localStorage.setItem('feedbacks', JSON.stringify(this.feedbacks))
     feedback.form.reset();
-    alert("Feedback send !! ")
+    this.feedbackSuccess = true;
   }
-
 
 }

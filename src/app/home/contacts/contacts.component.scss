@@ -1,0 +1,14 @@
+.custome-success {
+    animation: success-response 0.5s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+  }
+
+@keyframes success-response {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }

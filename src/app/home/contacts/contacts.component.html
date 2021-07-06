@@ -6,6 +6,9 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe enim
         distinctio ut eaque dolores iure?
       </p>
+      <div class="alert alert-success custome-success" *ngIf="feedbackSuccess">
+        <i class="bi bi-check-circle-fill"></i> Feedback Sent!!
+      </div>
 
       <form #feedback="ngForm">
         <div class="mb-3">
@@ -45,7 +48,7 @@
             id="error"
             class="form-text text-danger"
             *ngIf="
-            emailValidate.errors &&
+              emailValidate.errors &&
               (emailValidate.dirty || emailValidate.touched)
             "
           >
@@ -64,22 +67,25 @@
             #messageValidate="ngModel"
           ></textarea>
           <div
-          id="error"
-          class="form-text text-danger"
-          *ngIf="
-          messageValidate.errors &&
-            (messageValidate.dirty || messageValidate.touched)
-          "
-        >
-          Message is required
-        </div>
+            id="error"
+            class="form-text text-danger"
+            *ngIf="
+              messageValidate.errors &&
+              (messageValidate.dirty || messageValidate.touched)
+            "
+          >
+            Message is required
+          </div>
         </div>
 
         <button
           type="submit"
           [disabled]="!feedback.valid"
-          [ngClass]="{'btn btn-light': !feedback.valid, 'btn btn-primary' : feedback.valid }"
-          (click)="sendFeedback(feedbackData,feedback)"
+          [ngClass]="{
+            'btn btn-light': !feedback.valid,
+            'btn btn-primary': feedback.valid
+          }"
+          (click)="sendFeedback(feedbackData, feedback)"
         >
           Submit
         </button>
