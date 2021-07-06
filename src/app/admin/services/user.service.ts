@@ -35,16 +35,12 @@ export class UserService {
   addUser(user: any) {
     console.log(user);
     this.tempList = JSON.parse(localStorage.getItem('userList') || '');
-    if (this.tempList.length != 0) {
-      this.tempList.push(user)
-      localStorage.setItem('userList', JSON.stringify(this.tempList))
-    }
-    else {
+    if (this.tempList.length === 0) {
       this.tempList = this.userList;
-      this.tempList.push(user);
-      localStorage.setItem('userList', JSON.stringify(this.tempList))
-
+      
     }
+    this.tempList.push(user)
+      localStorage.setItem('userList', JSON.stringify(this.tempList))
 
   }
   editUser(user: users) {

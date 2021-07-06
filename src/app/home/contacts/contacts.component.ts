@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-contacts',
@@ -19,17 +20,13 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  sendFeedback(data: any) {
+  sendFeedback(data: any ,feedback: NgForm) {
     // console.log(data);
     this.feedbacks.push(data);
     localStorage.setItem('feedbacks', JSON.stringify(this.feedbacks))
+    feedback.form.reset();
     alert("Feedback send !! ")
-    this.formDataClear(this.feedbackData)
   }
-  formDataClear(formdData : any){
-    formdData.name='';
-    formdData.email='';
-    formdData.message='';
-  }
+
 
 }

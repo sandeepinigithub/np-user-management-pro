@@ -19,7 +19,10 @@ export class AdminPageComponent implements OnInit, DoCheck {
   userForm: FormGroup;
 
   constructor(private userService: UserService) {
-    this.tempList = JSON.parse(localStorage.getItem('userList') || '');
+    if(localStorage.getItem('userList') != null){
+      this.tempList = JSON.parse(localStorage.getItem('userList') || '');
+    }
+    
     if (this.tempList.length !=0) {
       this.users = this.tempList
     }

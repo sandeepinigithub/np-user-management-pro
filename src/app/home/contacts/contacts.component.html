@@ -77,9 +77,9 @@
 
         <button
           type="submit"
-          class="btn btn-primary"
           [disabled]="!feedback.valid"
-          (click)="sendFeedback(feedbackData)"
+          [ngClass]="{'btn btn-light': !feedback.valid, 'btn btn-primary' : feedback.valid }"
+          (click)="sendFeedback(feedbackData,feedback)"
         >
           Submit
         </button>

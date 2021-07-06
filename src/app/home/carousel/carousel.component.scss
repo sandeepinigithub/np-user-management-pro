@@ -1,0 +1,38 @@
+.carousel-logo {
+  height: 50px;
+  max-width: 100%;
+}
+.label {
+  color: grey;
+  & a {
+    text-decoration: none;
+    font-size: 14px;
+    color: inherit;
+    display: block;
+    & span {
+      display: inline-block;
+    }
+    & span:nth-child(2) {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+  &:hover {
+    color: blue;
+    text-decoration: line-through;
+  }
+}
+.details{
+    & a{
+        text-decoration: none;
+        color: #000;
+        font-weight: 500;
+        font-size: 2rem;
+        &:hover{
+            color: blue;
+        }
+    }   
+    
+}
+

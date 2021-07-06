@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-page.component.scss']
 })
 export class UserPageComponent implements OnInit {
-
-  constructor() { }
+  
+  activeUser : any[] = [];
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
+    this.activeUser=JSON.parse(localStorage.getItem('activeUser')|| '');
   }
 
 }

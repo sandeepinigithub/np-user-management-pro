@@ -5,28 +5,40 @@
   [pagination]="{ clickable: true }"
   [autoplay]="true"
 >
-  <ng-template swiperSlide>
-    <img
-      height="400px"
-      width="100%"
-      src="https://media-exp3.licdn.com/dms/image/C4D22AQHHmiFedvmsDg/feedshare-shrink_800/0/1620912931922?e=1628121600&v=beta&t=OsTXQqc-hnbfPatoKOjh4J91We0TcCmPB_o9wC3vzaE"
-      alt=""
-    />
-  </ng-template>
-  <ng-template swiperSlide>
-    <img
-      height="400px"
-      width="100%"
-      src="https://media-exp3.licdn.com/dms/image/C4D22AQFmYyIKg62G0Q/feedshare-shrink_800/0/1594641768749?e=1628121600&v=beta&t=CnMuxgW7BIHLE_dW9lOItA_xkHll1ODvrMPunXIUbpM"
-      alt=""
-    />
-  </ng-template>
-  <ng-template swiperSlide>
-    <img
-      height="400px"
-      width="100%"
-      src="https://media-exp3.licdn.com/dms/image/C4D22AQHbh6Iul4uTQg/feedshare-shrink_800/0/1622181781239?e=1628121600&v=beta&t=N4RNSutN7UBGNCpUSwZoWmkl_SPEA5-cBOiunC93wdY"
-      alt=""
-    />
+  <ng-template swiperSlide *ngFor="let carousel of carouselData">
+    <div class="container">
+      <div class="row mt-3">
+        <div class="col-6">
+          <img
+            class="img-fluid"
+            width="100%"
+            src="{{ carousel.imgSrc }}"
+            alt=""
+          />
+        </div>
+        <div class="col-6">
+          <span class="d-block mb-3">
+            <img
+              class="img-fluid carousel-logo"
+              src="{{ carousel.logo }}"
+              alt=""
+            />
+          </span>
+          <p class="label">
+            <a href="">
+              <span>{{ carousel.label1.heading }} : </span>
+              <span> {{ carousel.label1.details }}</span>
+            </a>
+            <a href="">
+              <span>{{ carousel.label2.heading }} : </span>
+              <span> {{ carousel.label2.details }}</span>
+            </a>
+          </p>
+          <p class="details">
+            <a href="">{{ carousel.details }}</a>
+          </p>
+        </div>
+      </div>
+    </div>
   </ng-template>
 </swiper>
