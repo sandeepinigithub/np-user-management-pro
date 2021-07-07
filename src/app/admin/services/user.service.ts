@@ -16,50 +16,39 @@ export interface users {
 export class UserService {
 
   tempList: users[] = [];
-  userList: users[] = [
-    {
-      "id": 1,
-      "name": "Sandeep Kumar Shukla",
-      "username": "sandeepini",
-      "email": "sandeepini.2012@gmail.com",
-      "password": 123456789,
-      "role": "admin",
-      "status": "active"
-    },
-
-
-  ]
 
   constructor() { }
 
   addUser(user: any) {
-    console.log(user);
-    this.tempList = JSON.parse(localStorage.getItem('userList') || '');
-    if (this.tempList.length === 0) {
-      this.tempList = this.userList;
-      
-    }
-    this.tempList.push(user)
+    // console.log(user);
+    if (localStorage.getItem('userList') !== null) {
+      this.tempList = JSON.parse(localStorage.getItem('userList') || '');
+      user.id = Math.random().toString(36).substr(2, 9);
+      this.tempList.push(user)
       localStorage.setItem('userList', JSON.stringify(this.tempList))
+    }
+    else {
+      localStorage.setItem('userList', JSON.stringify(user))
+    }
+
 
   }
   editUser(user: users) {
-    this.tempList = JSON.parse(localStorage.getItem('userList') || '');
-    const index = this.tempList.findIndex(c => c.id === user.id);
-    this.tempList[index] = user;
-    localStorage.setItem('userList', JSON.stringify(this.tempList));
-  }
-  deleteUser(id: number) {
-    this.tempList = JSON.parse(localStorage.getItem('userList') || '');
-    if (this.tempList.length != 0) {
-      const user = this.tempList.findIndex(c => c.id == id)
-      this.tempList.splice(user, 1);
+    if (localStorage.getItem('userList') !== null) {
+      this.tempList = JSON.parse(localStorage.getItem('userList') || '');
+      const index = this.tempList.findIndex(c => c.id === user.id);
+      this.tempList[index] = user;
       localStorage.setItem('userList', JSON.stringify(this.tempList));
     }
-    else{
-      const user = this.userList.findIndex(c => c.id == id)
-      this.userList.splice(user, 1);
-    }
 
+  }
+  deleteUser(id: number) {
+    if (localStorage.getItem('userList') !== null) {
+      this.tempList = JSON.parse(localStorage.getItem('userList') || '');
+      const index = this.tempList.findIndex(c => c.id == id)
+      this.tempList.splice(index, 1);
+      localStorage.setItem('userList', JSON.stringify(this.tempList));
+
+    }
   }
 }

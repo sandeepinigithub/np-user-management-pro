@@ -8,8 +8,9 @@ import { NgForm } from '@angular/forms';
 })
 export class ContactsComponent implements OnInit {
 
-  feedbacks: any = [{ name: 'Sandeep Kumar Shukla', email: 'sandeepini.2012@gmail.com', message: 'Website is awesome!' }];
-  feedbackSuccess:boolean = false;
+  tempFeedbacks: any = [];
+  feedbacks: any = [];
+  feedbackSuccess: boolean = false;
 
   feedbackData: any = {
     name: '',
@@ -21,12 +22,22 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  sendFeedback(data: any ,feedback: NgForm) {
+  sendFeedback(data: any, feedback: NgForm) {
     // console.log(data);
-    this.feedbacks.push(data);
-    localStorage.setItem('feedbacks', JSON.stringify(this.feedbacks))
-    feedback.form.reset();
-    this.feedbackSuccess = true;
+    if (localStorage.getItem('feedbacks') == null) {
+      this.feedbacks.push(data);
+      localStorage.setItem('feedbacks', JSON.stringify(this.feedbacks));
+      feedback.form.reset();
+      this.feedbackSuccess = true;
+    }
+    else {
+      this.feedbacks = JSON.parse(localStorage.getItem('feedbacks') || '');
+      this.feedbacks.push(data);
+      localStorage.setItem('feedbacks', JSON.stringify(this.feedbacks));
+      feedback.form.reset();
+      this.feedbackSuccess = true;
+    }
+
   }
 
 }

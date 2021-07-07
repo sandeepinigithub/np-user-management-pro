@@ -113,22 +113,17 @@
           </div>
           <div class="modal-body">
             <form [formGroup]="userForm">
-              <div class="mb-3">
+              <div class="mb-3" *ngIf="editFlag">
                 <label for="userId" class="form-label">User Id : </label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   id="userId"
                   placeholder="Id"
                   formControlName="id"
+                  readonly
                   required
                 />
-                <div
-                  class="fs-6 text-danger"
-                  *ngIf="this.form.id.errors?.required"
-                >
-                  Id is required.
-                </div>
               </div>
               <div class="mb-3">
                 <label for="userName" class="form-label">Name : </label>
@@ -144,14 +139,14 @@
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.name.errors?.required"
+                  *ngIf="this.form.name.errors?.required  && (this.form.name.dirty || this.form.name.touched)"
                 >
                   Name is required.
                 </div>
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.name.errors?.minlength"
+                  *ngIf="this.form.name.errors?.minlength && (this.form.name.dirty || this.form.name.touched)"
                 >
                   Name must be at least 4 characters long.
                 </div>
@@ -180,7 +175,7 @@
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.email.errors?.required"
+                  *ngIf="this.form.email.errors?.required && (this.form.email.dirty || this.form.email.touched)"
                 >
                   Email is required.
                 </div>
@@ -201,7 +196,7 @@
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.password.errors?.required"
+                  *ngIf="this.form.password.errors?.required && (this.form.password.dirty || this.form.password.touched)"
                 >
                   Password is required.
                 </div>
@@ -216,7 +211,14 @@
                   id="userRole"
                   placeholder="Role"
                   formControlName="role"
+                  required
                 />
+                <div
+                  class="fs-6 text-danger"
+                  *ngIf="this.form.role.errors?.required && (this.form.role.dirty || this.form.role.touched)"
+                >
+                  Password is required.
+                </div>
               </div>
               <div class="mb-3">
                 <label for="userStatus" class="form-label">Status : </label>

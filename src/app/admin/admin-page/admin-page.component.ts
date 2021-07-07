@@ -15,19 +15,17 @@ export class AdminPageComponent implements OnInit, DoCheck {
   viewData: any = [];
   formHeading: string;
   fBtnText: string;
-  editFlag: boolean = true;
+  editFlag: boolean = false;
+  editUser :any =[];
   userForm: FormGroup;
 
   constructor(private userService: UserService) {
-    if(localStorage.getItem('userList') != null){
+    if (localStorage.getItem('userList') != null) {
       this.tempList = JSON.parse(localStorage.getItem('userList') || '');
-    }
-    
-    if (this.tempList.length !=0) {
-      this.users = this.tempList
+      this.users = this.tempList;
     }
     else {
-      this.users = userService.userList;
+      alert("No user available!!")
     }
 
   }
@@ -45,14 +43,11 @@ export class AdminPageComponent implements OnInit, DoCheck {
     });
   }
   ngDoCheck() {
-    this.tempList = JSON.parse(localStorage.getItem('userList') || '');
-    if (this.tempList.length !=0) {
+    if (localStorage.getItem('userList') !== null) {
+      this.tempList = JSON.parse(localStorage.getItem('userList') || '');
       this.users = this.tempList
-      
     }
-    else {
-      this.users = this.userService.userList;
-    }
+
   }
 
   get form() { return this.userForm.controls };
@@ -69,14 +64,15 @@ export class AdminPageComponent implements OnInit, DoCheck {
   addOrEdit(user?: any) {
     if (user != null) {
       this.editFlag = true;
+      this.editUser = user ;
       this.formHeading = "Edit User Details";
       this.fBtnText = "Save Changes";
       console.log(user);
       this.userForm.setValue(user);
-      // this.userService.editUser(user);
     }
     if (!this.editFlag) {
       this.userService.addUser(this.userForm.value);
+      this.userForm.reset()
     }
 
   }
@@ -89,6 +85,7 @@ export class AdminPageComponent implements OnInit, DoCheck {
     this.formHeading = "Add User";
     this.fBtnText = "Add";
     this.editFlag = false;
+    this.userForm.reset()
 
   }
 

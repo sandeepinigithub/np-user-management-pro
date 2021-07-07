@@ -30,7 +30,7 @@ export class SignupComponent implements OnInit {
   signupUser(data: any, signupForm: NgForm) {
     let duplicateCheck: boolean = false
     // console.log(Math.random().toString(36).substr(2,9));
-    data.id = Math.random().toString(36).substr(2, 9)
+    data.id = Math.random().toString(36).substr(2, 9);
     // console.log(data);
     if (localStorage.getItem('userList') == null) {
       this.tempList.push(data);
