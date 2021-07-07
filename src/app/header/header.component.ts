@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements DoCheck {
 
-  constructor() { }
+  href:string = "";
+  loginPageActive:boolean=true;
+  hideSigninSignup:boolean=true;
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {
+  ngDoCheck(): void {
+    this.href = this.router.url;
+    // console.log(this.href);
+    // console.log(this.href.split("/")[this.href.split("/").indexOf("login")]);
+    if ((this.href.split("/")[this.href.split("/").indexOf("login")]) === "login") {
+      this.loginPageActive = false;
+
+    }
+    else{
+      this.loginPageActive = true;
+    }   
+
   }
 
 }

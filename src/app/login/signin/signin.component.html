@@ -3,13 +3,13 @@
     <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
       <div class="card shadow-lg">
         <div class="card-body p-5">
-          <h1 class="fs-4 card-title fw-bold mb-4">Login</h1>
+          <h1 class="fs-4 card-title fw-bold mb-4 text-center">Login</h1>
           <form
-            method="POST"
-            class="needs-validation"
-            novalidate=""
-            autocomplete="off"
+            #signin="ngForm"
           >
+          <div class="alert alert-danger" *ngIf="signinError">
+            <i class="bi bi-x-lg"></i> Wrong email or password !! 
+          </div>
             <div class="mb-3">
               <label class="mb-2 text-muted" for="email">E-Mail Address</label>
               <input
@@ -19,7 +19,6 @@
                 name="email"
                 [(ngModel)]="signinData.email"
                 required
-                autofocus
               />
               <div class="invalid-feedback">Email is invalid</div>
             </div>
@@ -52,7 +51,7 @@
                   >Remember Me</label
                 >
               </div>
-              <button type="submit" class="btn btn-primary ms-auto" (click)="signinUser(signinData)">
+              <button type="submit" class="btn btn-primary ms-auto" [disabled]="!signin.valid" (click)="signinUser(signinData,signin)">
                 Login
               </button>
             </div>
