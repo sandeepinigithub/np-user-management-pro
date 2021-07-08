@@ -28,4 +28,7 @@ export class AuthService {
     localStorage.removeItem('activeUser');
     this.isLoggedin = false;
   }
+  setLogin(){
+    this.isLoggedin = true;
+  }
 }

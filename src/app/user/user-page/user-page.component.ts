@@ -13,7 +13,14 @@ export class UserPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.activeUser=JSON.parse(localStorage.getItem('activeUser')|| '');
+    if(localStorage.getItem('activeUser') !=null){
+      this.activeUser=JSON.parse(localStorage.getItem('activeUser')|| '');
+    }
+    else{
+      console.log("No Active User");
+      
+    }
+    
   }
 
 }

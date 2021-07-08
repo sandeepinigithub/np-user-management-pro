@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +17,7 @@ export class SigninComponent implements OnInit {
     password: ''
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private authService : AuthService) { }
 
   ngOnInit(): void { }
 
@@ -59,6 +60,8 @@ export class SigninComponent implements OnInit {
       alert("No user Found!! Please register")
 
     }
+
+    this.authService.setLogin();
 
   }
 
