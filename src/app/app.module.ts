@@ -9,8 +9,9 @@ import { HomeModule } from './home/home.module';
 
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { LoginModule } from './login/login.module';
 import { NotFoundComponent } from './not-found/not-found.component';
+
+
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserAnimationsModule,
     HomeModule,
     FormsModule
+    
 
   ],
   exports:[],

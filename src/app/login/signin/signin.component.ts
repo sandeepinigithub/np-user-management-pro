@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,6 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SigninComponent implements OnInit {
 
+  color:ThemePalette="primary";
+  progressBar:boolean=false;
   signinError: boolean = false;
   tempList: any[] = [];
   signinData: any = {
@@ -21,8 +24,11 @@ export class SigninComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  signinUser(data: any, signinForm: NgForm) {
-    
+  signinUser(data: any, signinForm: NgForm) { 
+    setTimeout(() => {  
+      this.progressBar=true;    
+    }, 1);
+
     this.authService.setLogin();
     // console.log(data);
     if (localStorage.getItem('userList') != null) {
@@ -46,13 +52,24 @@ export class SigninComponent implements OnInit {
         }
       });
       if (userType) {
-        this.router.navigate(['/user']);
+        setTimeout(() => {  
+          this.progressBar=false; 
+          this.router.navigate(['/user']);   
+        }, 2000);
+        
       }
       else if (adminType) {
-        this.router.navigate(['/admin']);
+        setTimeout(() => {  
+          this.progressBar=false; 
+          this.router.navigate(['/admin']);   
+        }, 2000);
       }
       else {
-        this.signinError = true
+        setTimeout(() => {  
+          this.progressBar=false; 
+          this.signinError = true;   
+        }, 2000);
+        
       }
 
     }

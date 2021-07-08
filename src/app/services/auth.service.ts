@@ -4,19 +4,29 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  isLoggedIn = false;
+  // isLoggedIn = false;
 
-  constructor(){}
+  constructor() { }
 
   setLogin() {
-    this.isLoggedIn = true;
+    // this.isLoggedIn = true;
+    localStorage.setItem('isLoggedIn', JSON.stringify(true));
+
   }
 
   setLogout() {
-    this.isLoggedIn = false;
+    // this.isLoggedIn = false;
+    localStorage.removeItem('isLoggedIn');
   }
 
   getLogin() {
-    return this.isLoggedIn;
+    // return this.isLoggedIn ;
+    if (localStorage.getItem('isLoggedIn') != null) {
+      return JSON.parse(localStorage.getItem('isLoggedIn') || '');
+    }
+    else {
+      return false
+    }
+
   }
 }

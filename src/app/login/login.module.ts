@@ -9,6 +9,9 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+
 @NgModule({
   declarations: [
     LoginComponent,
@@ -18,7 +21,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    FormsModule
+    FormsModule,
+    MatProgressBarModule
+    
     
   ],
 })
