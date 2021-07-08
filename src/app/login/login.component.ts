@@ -15,7 +15,9 @@ export class LoginComponent implements OnInit {
     repassword: ''
   };
 
-  constructor() { }
+  constructor() {
+    
+   }
 
   ngOnInit(): void {
   }

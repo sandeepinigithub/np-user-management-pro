@@ -1,5 +1,7 @@
 <div class="container">
     <div class="button btn btn-info my-3" routerLink="/admin">Back</div>
+    <h1 class="text-center mb-3">Feedbacks</h1>
+    <div *ngIf="feedbacks.length===0"> {{msg}} </div>
     <table class="table">
         <thead>
           <tr>

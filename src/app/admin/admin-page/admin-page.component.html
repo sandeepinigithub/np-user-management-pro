@@ -1,8 +1,18 @@
 <div class="container">
-  <button class="btn btn-info my-3 mx-2" routerLink="/admin/feedbacks">See feedbacks</button>
-  <button class="btn btn-info my-3 mx-2" routerLink="/user">View as user</button>
+  <button class="btn btn-info my-3 mx-2" routerLink="/admin/feedbacks">
+    See feedbacks
+  </button>
+  <button class="btn btn-info my-3 mx-2" routerLink="/user">
+    View as user
+  </button>
+  <div>
+    <span class="bg-secondary text-uppercase text-light mx-2">Logged in </span>:
+    <span class="d-inline-block bg-light text-uppercase mx-2"
+      >{{ activeUser[0].name }}(id: {{ activeUser[0].id }})
+      {{ activeUser[0].role }}</span
+    >
+  </div>
   <div class="table-wrapper">
-    
     <div class="table-title">
       <div class="row">
         <div class="d-flex col-sm-8">
@@ -45,7 +55,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of (users | userFilter : searchField)">
+        <tr *ngFor="let user of users | userFilter: searchField">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.username }}</td>
@@ -140,14 +150,20 @@
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.name.errors?.required  && (this.form.name.dirty || this.form.name.touched)"
+                  *ngIf="
+                    this.form.name.errors?.required &&
+                    (this.form.name.dirty || this.form.name.touched)
+                  "
                 >
                   Name is required.
                 </div>
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.name.errors?.minlength && (this.form.name.dirty || this.form.name.touched)"
+                  *ngIf="
+                    this.form.name.errors?.minlength &&
+                    (this.form.name.dirty || this.form.name.touched)
+                  "
                 >
                   Name must be at least 4 characters long.
                 </div>
@@ -176,7 +192,10 @@
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.email.errors?.required && (this.form.email.dirty || this.form.email.touched)"
+                  *ngIf="
+                    this.form.email.errors?.required &&
+                    (this.form.email.dirty || this.form.email.touched)
+                  "
                 >
                   Email is required.
                 </div>
@@ -197,7 +216,10 @@
 
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.password.errors?.required && (this.form.password.dirty || this.form.password.touched)"
+                  *ngIf="
+                    this.form.password.errors?.required &&
+                    (this.form.password.dirty || this.form.password.touched)
+                  "
                 >
                   Password is required.
                 </div>
@@ -216,7 +238,10 @@
                 />
                 <div
                   class="fs-6 text-danger"
-                  *ngIf="this.form.role.errors?.required && (this.form.role.dirty || this.form.role.touched)"
+                  *ngIf="
+                    this.form.role.errors?.required &&
+                    (this.form.role.dirty || this.form.role.touched)
+                  "
                 >
                   Password is required.
                 </div>

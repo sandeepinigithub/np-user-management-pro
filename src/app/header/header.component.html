@@ -1,7 +1,8 @@
 <nav
-  *ngIf="loginPageActive"
+  *ngIf="(!path.getLoginPageStatus() && !path.getNotFoundPageStatus())  || (path.getLoginPageStatus() && path.getNotFoundPageStatus())"
   class="navbar navbar-expand-lg navbar-dark bg-dark"
 >
+<!-- (!path.getLoginPageStatus() && path.getNotFoundPageStatus()) -->
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">
       <img src="assets/np-logo.png" alt="" width="40px" height="40px" />
@@ -34,10 +35,10 @@
         <li class="nav-item">
           <a class="nav-link" href="#contacts">Contacts</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="authService.isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/admin">Admin</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="authService.isLoggedIn" class="nav-item">
           <a class="nav-link" routerLink="/user">User</a>
         </li>
       </ul>

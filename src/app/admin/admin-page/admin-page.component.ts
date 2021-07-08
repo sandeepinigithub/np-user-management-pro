@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -19,7 +20,9 @@ export class AdminPageComponent implements OnInit, DoCheck {
   editUser :any =[];
   userForm: FormGroup;
 
-  constructor(private userService: UserService) {
+  activeUser:any[]=[];
+
+  constructor(private userService: UserService) {   
     if (localStorage.getItem('userList') != null) {
       this.tempList = JSON.parse(localStorage.getItem('userList') || '');
       this.users = this.tempList;
@@ -41,6 +44,10 @@ export class AdminPageComponent implements OnInit, DoCheck {
       role: new FormControl(''),
       status: new FormControl(''),
     });
+
+    if(localStorage.getItem('activeUser') !=null){
+      this.activeUser=JSON.parse(localStorage.getItem('activeUser')|| '');
+    }
   }
   ngDoCheck() {
     if (localStorage.getItem('userList') !== null) {
