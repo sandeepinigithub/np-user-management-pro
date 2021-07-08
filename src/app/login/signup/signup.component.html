@@ -11,6 +11,7 @@
                 type="text"
                 class="form-control"
                 name="name"
+                placeholder="Name"
                 [(ngModel)]="signupData.name"
                 required
                 #nameValidate="ngModel"
@@ -32,6 +33,7 @@
                 type="text"
                 class="form-control"
                 name="username"
+                placeholder="Username"
                 [(ngModel)]="signupData.username"
                 required
                 #usernameValidate="ngModel"
@@ -54,6 +56,7 @@
                 type="email"
                 class="form-control"
                 name="email"
+                placeholder="Enter your email address"
                 [(ngModel)]="signupData.email"
                 required
                 #emailValidate="ngModel"
@@ -76,6 +79,7 @@
                 type="password"
                 class="form-control"
                 name="password"
+                placeholder="Enter your password"
                 [(ngModel)]="signupData.password"
                 required
                 #passwordValidate="ngModel"
@@ -98,6 +102,7 @@
                 type="text"
                 class="form-control"
                 name="role"
+                placeholder="Type : admin or user"
                 [(ngModel)]="signupData.role"
                 required
                 #roleValidate="ngModel"
@@ -121,6 +126,7 @@
                 type="text"
                 class="form-control"
                 name="status"
+                placeholder="Type : active or inactive"
                 [(ngModel)]="signupData.status"
                 required
                 #statusValidate="ngModel"

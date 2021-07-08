@@ -17,6 +17,7 @@
             type="text"
             class="form-control"
             name="name"
+            placeholder="Enter your name"
             [(ngModel)]="feedbackData.name"
             required
             #nameValidate="ngModel"
@@ -40,6 +41,7 @@
             class="form-control"
             pattern="[^ @]*@[^ @]*"
             name="email"
+            placeholder="Enter your email"
             [(ngModel)]="feedbackData.email"
             required
             #emailValidate="ngModel"
@@ -63,6 +65,7 @@
             rows="3"
             required
             name="message"
+            placeholder="message"
             [(ngModel)]="feedbackData.message"
             #messageValidate="ngModel"
           ></textarea>
