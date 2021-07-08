@@ -43,7 +43,7 @@
       </ul>
       <div class="text-end">
         <button
-          *ngIf="!isLoggedin"
+          *ngIf="!authService.isLoggedIn"
           type="button"
           class="btn btn-outline-light me-2"
           routerLink="/login/signin"
@@ -51,7 +51,7 @@
           Login
         </button>
         <button
-          *ngIf="!isLoggedin"
+          *ngIf="!authService.isLoggedIn"
           type="button"
           class="btn btn-warning"
           routerLink="/login/signup"
@@ -59,7 +59,7 @@
           Sign-up
         </button>
         <button
-          *ngIf="isLoggedin"
+          *ngIf="authService.isLoggedIn"
           type="button"
           class="btn btn-danger"
           routerLink="/"

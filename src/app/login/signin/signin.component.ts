@@ -17,14 +17,15 @@ export class SigninComponent implements OnInit {
     password: ''
   }
 
-  constructor(private router: Router,private authService : AuthService) { }
+  constructor(private router: Router,public authService : AuthService) { }
 
   ngOnInit(): void { }
 
   signinUser(data: any, signinForm: NgForm) {
+    
+    this.authService.setLogin();
     // console.log(data);
     if (localStorage.getItem('userList') != null) {
-      let error: boolean;
       let userType = false;
       let adminType = false;
       let activeUser: any[] = [];
@@ -59,11 +60,8 @@ export class SigninComponent implements OnInit {
       signinForm.form.reset();
       alert("No user Found!! Please register")
 
-    }
-
-    this.authService.setLogin();
+    }    
 
   }
-
 
 }

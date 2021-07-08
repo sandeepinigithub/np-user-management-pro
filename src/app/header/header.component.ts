@@ -7,13 +7,12 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements DoCheck , OnChanges{
+export class HeaderComponent implements DoCheck {
 
-  href:string = "";
-  loginPageActive:boolean=true;
-  hideSigninSignup:boolean=true;
-  isLoggedin : boolean = false;
-  constructor(private router: Router ,private authService : AuthService) { }
+  href: string = "";
+  loginPageActive: boolean = true;
+  hideSigninSignup: boolean = true;
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngDoCheck(): void {
     this.href = this.router.url;
@@ -23,18 +22,11 @@ export class HeaderComponent implements DoCheck , OnChanges{
       this.loginPageActive = false;
 
     }
-    else{
+    else {
       this.loginPageActive = true;
-    }  
-    
-    this.isLoggedin = this.authService.getLogin();
-    
+    }
   }
-  ngOnChanges(){
-    this.isLoggedin = this.authService.getLogin();
-  }
-
   logout(){
-    this.authService.setLogout();
+    this.authService.setLogout();    
   }
 }
