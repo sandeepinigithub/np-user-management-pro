@@ -1,0 +1,27 @@
+.online {
+  background-color: green;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  height: fit-content;
+  animation: online-response 0.5s 1;
+  animation-fill-mode: forwards;
+  animation-delay: 2s;
+}
+.offline {
+  background-color: red;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+  height: fit-content;
+}
+
+@keyframes online-response {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+

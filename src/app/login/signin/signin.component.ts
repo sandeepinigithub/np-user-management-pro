@@ -11,8 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SigninComponent implements OnInit {
 
-  color:ThemePalette="primary";
-  progressBar:boolean=false;
+  color: ThemePalette = "primary";
+  progressBar: boolean = false;
   signinError: boolean = false;
   tempList: any[] = [];
   signinData: any = {
@@ -20,16 +20,14 @@ export class SigninComponent implements OnInit {
     password: ''
   }
 
-  constructor(private router: Router,public authService : AuthService) { }
+  constructor(private router: Router, public authService: AuthService) { }
 
   ngOnInit(): void { }
 
-  signinUser(data: any, signinForm: NgForm) { 
-    setTimeout(() => {  
-      this.progressBar=true;    
+  signinUser(data: any, signinForm: NgForm) {
+    setTimeout(() => {
+      this.progressBar = true;
     }, 1);
-
-    this.authService.setLogin();
     // console.log(data);
     if (localStorage.getItem('userList') != null) {
       let userType = false;
@@ -52,32 +50,38 @@ export class SigninComponent implements OnInit {
         }
       });
       if (userType) {
-        setTimeout(() => {  
-          this.progressBar=false; 
-          this.router.navigate(['/user']);   
+        this.authService.setLogin();
+        setTimeout(() => {
+          this.progressBar = false;
+          this.router.navigate(['/user']);
         }, 2000);
-        
+
       }
       else if (adminType) {
-        setTimeout(() => {  
-          this.progressBar=false; 
-          this.router.navigate(['/admin']);   
+        this.authService.setLogin();
+        setTimeout(() => {
+          this.progressBar = false;
+          this.router.navigate(['/admin']);
         }, 2000);
       }
       else {
-        setTimeout(() => {  
-          this.progressBar=false; 
-          this.signinError = true;   
+        setTimeout(() => {
+          this.progressBar = false;
+          this.signinError = true;
         }, 2000);
-        
+
       }
 
     }
     else {
       signinForm.form.reset();
+      setTimeout(() => {
+        this.progressBar = false;
+      }, 1);
+
       alert("No user Found!! Please register")
 
-    }    
+    }
 
   }
 

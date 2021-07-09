@@ -1,1 +1,35 @@
-<router-outlet></router-outlet>
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item routerLink="/user" routerLinkActive="active">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <div class="sidenav-item">Home</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/user/profile" routerLinkActive="active">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <div class="sidenav-item">Profile</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/user/leave-page" routerLinkActive="active">
+        <mat-icon mat-list-icon>book_online</mat-icon>
+        <div class="sidenav-item">Apply Leave</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/user/settings" routerLinkActive="active">
+        <mat-icon mat-list-icon>settings</mat-icon>
+        <div class="sidenav-item">Settings</div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="/user/accounts" routerLinkActive="active">
+        <mat-icon mat-list-icon>account_balance_wallet</mat-icon>
+        <div class="sidenav-item">Your Accounts</div>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet>
+      <app-online-status [onlineStatusMessage]="connectionStatusMessage" [onlineStatus]="connectionStatus"></app-online-status>
+    </router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
