@@ -1,0 +1,36 @@
+<ng-container>
+  <button type="button" class="btn-close float-end" [mat-dialog-close]="true"></button>
+  <h1 mat-dialog-title>User Details</h1>
+  <mat-dialog-content>
+    <div class="container">
+      <p class="fs-5 text-danger">
+        <i class="bi bi-card-text"></i> Id :
+        <span class="text-dark">{{ data.id }}</span>
+      </p>
+      <p class="fs-5 text-danger">
+        <i class="bi bi-person-square"></i> Name :
+        <span class="text-dark">{{ data.name }}</span>
+      </p>
+      <p class="fs-5 text-danger">
+        <i class="bi bi-arrow-right-circle"></i> Username :
+        <span class="text-dark">{{ data.username }}</span>
+      </p>
+      <p class="fs-5 text-danger">
+        <i class="bi bi-envelope"></i> Email :
+        <span class="text-dark">{{ data.email }}</span>
+      </p>
+      <p class="fs-5 text-danger">
+        <i class="bi bi-key-fill"></i> Password :
+        <span class="text-dark">{{ data.password }}</span>
+      </p>
+      <p class="fs-5 text-danger">
+        <i class="bi bi-person"></i> Role :
+        <span class="text-dark">{{ data.role }}</span>
+      </p>
+      <p class="fs-5 text-danger">
+        <i class="bi bi-clock"></i> Status :
+        <span class="text-dark">{{ data.status }}</span>
+      </p>
+    </div>
+  </mat-dialog-content>
+</ng-container>

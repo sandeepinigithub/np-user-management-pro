@@ -12,10 +12,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
 import { ProjectsComponent } from './projects/projects.component';
 import { CalenderComponent } from './calender/calender.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AccountsComponent } from './accounts/accounts.component';
+import { ViewUserComponent } from './view-user/view-user.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
@@ -27,7 +33,10 @@ import { AccountsComponent } from './accounts/accounts.component';
     ProjectsComponent,
     CalenderComponent,
     SettingsComponent,
-    AccountsComponent
+    AccountsComponent,
+    ViewUserComponent,
+    AddUserComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule,
@@ -37,7 +46,9 @@ import { AccountsComponent } from './accounts/accounts.component';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
+    MatButtonModule
   ]
 })
 export class AdminModule { }

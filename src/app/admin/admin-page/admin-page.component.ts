@@ -1,7 +1,12 @@
 import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
+import { AddUserComponent } from '../add-user/add-user.component';
+import { CalenderComponent } from '../calender/calender.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 import { UserService } from '../services/user.service';
+import { ViewUserComponent } from '../view-user/view-user.component';
 
 @Component({
   selector: 'app-admin-page',
@@ -22,7 +27,7 @@ export class AdminPageComponent implements OnInit, DoCheck {
 
   activeUser:any[]=[];
 
-  constructor(private userService: UserService) {   
+  constructor(private userService: UserService,public dialog: MatDialog) {   
     if (localStorage.getItem('userList') != null) {
       this.tempList = JSON.parse(localStorage.getItem('userList') || '');
       this.users = this.tempList;
@@ -93,7 +98,29 @@ export class AdminPageComponent implements OnInit, DoCheck {
     this.fBtnText = "Add";
     this.editFlag = false;
     this.userForm.reset()
+  }
 
+  addUserDialog() {
+    const dialogRef = this.dialog.open(AddUserComponent ,{ disableClose: true, width:'500px'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  editUserDialog(user:any) {
+    const dialogRef = this.dialog.open(EditUserComponent ,{ disableClose: true, width:'500px',data:user});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  viewUserDialog(user:any) {
+    const dialogRef = this.dialog.open(ViewUserComponent ,{ disableClose: true,width:'500px',
+    height: '70%', data:user});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }
