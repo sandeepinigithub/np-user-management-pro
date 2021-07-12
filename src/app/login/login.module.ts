@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     CommonModule,
     LoginRoutingModule,
     FormsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatSelectModule
     
     
   ],

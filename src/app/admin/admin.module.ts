@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
 
 import { ProjectsComponent } from './projects/projects.component';
 import { CalenderComponent } from './calender/calender.component';
@@ -48,7 +49,9 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     MatIconModule,
     MatListModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
+    
   ]
 })
 export class AdminModule { }

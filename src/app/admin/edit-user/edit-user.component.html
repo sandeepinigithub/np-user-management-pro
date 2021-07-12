@@ -104,36 +104,22 @@
           </div>
         </div>
   
-        <div class="mb-3">
-          <label for="userRole" class="form-label">Role : </label>
-          <input
-            type="text"
-            class="form-control"
-            id="userRole"
-            placeholder="Role"
-            formControlName="role"
-            required
-          />
-          <div
-            class="fs-6 text-danger"
-            *ngIf="
-              this.form.role.errors?.required &&
-              (this.form.role.dirty || this.form.role.touched)
-            "
-          >
-            Password is required.
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="userStatus" class="form-label">Status : </label>
-          <input
-            type="text"
-            class="form-control"
-            id="userStatus"
-            placeholder="Status"
-            formControlName="status"
-          />
-        </div>
+
+        <mat-form-field class="mx-2">
+          <mat-label>Select role</mat-label>
+          <mat-select formControlName="role">
+            <mat-option value="user">User</mat-option>
+            <mat-option value="admin">Admin</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field class="mx-2">
+          <mat-label>Select status</mat-label>
+          <mat-select formControlName="status">
+            <mat-option value="active">Active</mat-option>
+            <mat-option value="inactive">Inactive</mat-option>
+          </mat-select>
+        </mat-form-field>
       </form>
     </mat-dialog-content>
   

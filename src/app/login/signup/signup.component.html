@@ -1,7 +1,7 @@
-<div class="container my-3">
+<div class="container mt-3">
   <div class="row justify-content-sm-center h-100">
     <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-7 col-sm-9">
-      <div class="card shadow-lg">
+      <div class="card shadow-lg mb-5">
         <div class="card-body p-5">
           <h1 class="fs-4 card-title fw-bold mb-4">Register</h1>
           <form #signup="ngForm">
@@ -96,61 +96,49 @@
               </div>
             </div>
 
-            <div class="mb-3">
-              <label for="role" class="form-label">Role</label>
-              <input
-                type="text"
-                class="form-control"
-                name="role"
-                placeholder="Type : admin or user"
-                [(ngModel)]="signupData.role"
-                required
-                #roleValidate="ngModel"
-              />
-              <div
-                id="error"
-                class="form-text text-danger"
-                *ngIf="
-                roleValidate.errors &&
-                  (roleValidate.dirty || roleValidate.touched)
-                "
-              >
-                Role is required
-              </div>
+            <div>
+              <mat-form-field>
+                <mat-label>Select role</mat-label>
+                <mat-select
+                  [(ngModel)]="signupData.role"
+                  required
+                  #roleValidate="ngModel"
+                  name="role"                >
+                  <mat-option value="user">User</mat-option>
+                  <mat-option value="admin">Admin</mat-option>
+                </mat-select>
+              </mat-form-field>
             </div>
 
-            
-            <div class="mb-3">
-              <label for="status" class="form-label">Status</label>
-              <input
-                type="text"
-                class="form-control"
-                name="status"
-                placeholder="Type : active or inactive"
-                [(ngModel)]="signupData.status"
-                required
-                #statusValidate="ngModel"
-              />
-              <div
-                id="error"
-                class="form-text text-danger"
-                *ngIf="
-                statusValidate.errors &&
-                  (statusValidate.dirty || statusValidate.touched)
-                "
-              >
-                Status is required
+              <div>
+                <mat-form-field>
+                  <mat-label>Select an option</mat-label>
+                  <mat-select
+                    [(ngModel)]="signupData.status"
+                    required
+                    #statusValidate="ngModel"
+                    name="status"                >
+                    <mat-option value="active">Active</mat-option>
+                    <mat-option value="inactive">Inactive</mat-option>
+                  </mat-select>
+                </mat-form-field>
               </div>
+
+            <div
+              class="alert alert-success custome-success"
+              *ngIf="signupSuccess"
+            >
+              <i class="bi bi-check-circle-fill"></i> You are registered
+              successfully !!
             </div>
-            <div class="alert alert-success custome-success" *ngIf="signupSuccess">
-              <i class="bi bi-check-circle-fill"></i> You are registered successfully !! 
-            </div>
+
+
 
             <button
               type="submit"
               class="btn btn-primary"
               [disabled]="!signup.valid"
-              (click)="signupUser(signupData,signup)"
+              (click)="signupUser(signupData, signup)"
             >
               Sign Up
             </button>

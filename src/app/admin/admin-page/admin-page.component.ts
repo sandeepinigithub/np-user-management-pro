@@ -22,12 +22,12 @@ export class AdminPageComponent implements OnInit, DoCheck {
   formHeading: string;
   fBtnText: string;
   editFlag: boolean = false;
-  editUser :any =[];
+  editUser: any = [];
   userForm: FormGroup;
 
-  activeUser:any[]=[];
+  activeUser: any[] = [];
 
-  constructor(private userService: UserService,public dialog: MatDialog) {   
+  constructor(private userService: UserService, public dialog: MatDialog) {
     if (localStorage.getItem('userList') != null) {
       this.tempList = JSON.parse(localStorage.getItem('userList') || '');
       this.users = this.tempList;
@@ -50,8 +50,8 @@ export class AdminPageComponent implements OnInit, DoCheck {
       status: new FormControl(''),
     });
 
-    if(sessionStorage.getItem('activeUser') !=null){
-      this.activeUser=JSON.parse(sessionStorage.getItem('activeUser')|| '');
+    if (sessionStorage.getItem('activeUser') != null) {
+      this.activeUser = JSON.parse(sessionStorage.getItem('activeUser') || '');
     }
   }
   ngDoCheck() {
@@ -76,7 +76,7 @@ export class AdminPageComponent implements OnInit, DoCheck {
   addOrEdit(user?: any) {
     if (user != null) {
       this.editFlag = true;
-      this.editUser = user ;
+      this.editUser = user;
       this.formHeading = "Edit User Details";
       this.fBtnText = "Save Changes";
       console.log(user);
@@ -101,25 +101,15 @@ export class AdminPageComponent implements OnInit, DoCheck {
   }
 
   addUserDialog() {
-    const dialogRef = this.dialog.open(AddUserComponent ,{ disableClose: true, width:'500px'});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.dialog.open(AddUserComponent, { disableClose: true, width: '500px' });
   }
-  editUserDialog(user:any) {
-    const dialogRef = this.dialog.open(EditUserComponent ,{ disableClose: true, width:'500px',data:user});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+  editUserDialog(user: any) {
+    const dialogRef = this.dialog.open(EditUserComponent, { disableClose: true, width: '500px', data: user });
   }
-  viewUserDialog(user:any) {
-    const dialogRef = this.dialog.open(ViewUserComponent ,{ disableClose: true,width:'500px',
-    height: '70%', data:user});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+  viewUserDialog(user: any) {
+    this.dialog.open(ViewUserComponent, {
+      disableClose: true, width: '500px',
+      height: '70%', data: user
     });
   }
 
