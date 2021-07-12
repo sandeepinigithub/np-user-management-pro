@@ -40,13 +40,13 @@ export class SigninComponent implements OnInit {
           // console.log("reached");                    
           userType = true;
           activeUser.push(user)
-          localStorage.setItem('activeUser', JSON.stringify(activeUser));
+          sessionStorage.setItem('activeUser', JSON.stringify(activeUser));
         }
         if ((user.email === data.email) && (user.password === data.password) && (user.role === "admin" || user.role === "Admin")) {
           // console.log("reached");                    
           adminType = true;
           activeUser.push(user)
-          localStorage.setItem('activeUser', JSON.stringify(activeUser));
+          sessionStorage.setItem('activeUser', JSON.stringify(activeUser));
         }
       });
       if (userType) {

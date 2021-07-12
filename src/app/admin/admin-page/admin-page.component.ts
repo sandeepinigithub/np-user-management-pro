@@ -50,8 +50,8 @@ export class AdminPageComponent implements OnInit, DoCheck {
       status: new FormControl(''),
     });
 
-    if(localStorage.getItem('activeUser') !=null){
-      this.activeUser=JSON.parse(localStorage.getItem('activeUser')|| '');
+    if(sessionStorage.getItem('activeUser') !=null){
+      this.activeUser=JSON.parse(sessionStorage.getItem('activeUser')|| '');
     }
   }
   ngDoCheck() {

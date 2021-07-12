@@ -10,19 +10,20 @@ export class AuthService {
 
   setLogin() {
     // this.isLoggedIn = true;
-    localStorage.setItem('isLoggedIn', JSON.stringify(true));
+    sessionStorage.setItem('isLoggedIn', JSON.stringify(true));
 
   }
 
   setLogout() {
     // this.isLoggedIn = false;
-    localStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.removeItem('activeUser');
   }
 
   getLogin() {
     // return this.isLoggedIn ;
-    if (localStorage.getItem('isLoggedIn') != null) {
-      return JSON.parse(localStorage.getItem('isLoggedIn') || '');
+    if (sessionStorage.getItem('isLoggedIn') != null) {
+      return JSON.parse(sessionStorage.getItem('isLoggedIn') || '');
     }
     else {
       return false

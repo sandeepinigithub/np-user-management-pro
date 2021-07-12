@@ -14,8 +14,8 @@ export class UserPageComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    if(localStorage.getItem('activeUser') !=null){
-      this.activeUser=JSON.parse(localStorage.getItem('activeUser')|| '');
+    if(sessionStorage.getItem('activeUser') !=null){
+      this.activeUser=JSON.parse(sessionStorage.getItem('activeUser')|| '');
     }
     else{
       console.log("No Active User");      
@@ -26,8 +26,8 @@ export class UserPageComponent implements OnInit {
     this.toggleValue = !this.toggleValue;
     let activeUserId:string;
     let userList:any[]=[];
-    if(localStorage.getItem('activeUser') != null && localStorage.getItem('userList') !=null){
-      activeUserId = JSON.parse(localStorage.getItem('activeUser') || '')[0].id; 
+    if(sessionStorage.getItem('activeUser') != null && localStorage.getItem('userList') !=null){
+      activeUserId = JSON.parse(sessionStorage.getItem('activeUser') || '')[0].id; 
       userList = JSON.parse(localStorage.getItem('userList') || '');
       const index = userList.findIndex(c => c.id === activeUserId);
       userList[index].status = "active";
@@ -39,8 +39,8 @@ export class UserPageComponent implements OnInit {
     this.toggleValue = !this.toggleValue;
     let activeUserId:string;
     let userList:any[]=[];
-    if(localStorage.getItem('activeUser') != null && localStorage.getItem('userList') !=null){
-      activeUserId = JSON.parse(localStorage.getItem('activeUser') || '')[0].id; 
+    if(sessionStorage.getItem('activeUser') != null && localStorage.getItem('userList') !=null){
+      activeUserId = JSON.parse(sessionStorage.getItem('activeUser') || '')[0].id; 
       userList = JSON.parse(localStorage.getItem('userList') || '');
       const index = userList.findIndex(c => c.id === activeUserId);
       userList[index].status = "inactive";
